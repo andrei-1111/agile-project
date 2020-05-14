@@ -1,0 +1,24 @@
+#!/bin/bash
+
+##
+# Convenvience script to run black against our code.
+#
+# Usage:
+#
+#     $ pipenv run ./mkblack
+#     $ pipenv run ./mkblack --check
+#     $ pipenv run ./mkblack --diff
+##
+
+HERE=$(dirname "$0")
+BLACK="black"
+
+if [ "$LOD_BLACK" ]; then
+    BLACK="$LOD_BLACK"
+fi
+
+$BLACK \
+    --line-length=79 \
+    --skip-string-normalization \
+    "$HERE" \
+    "$@"
