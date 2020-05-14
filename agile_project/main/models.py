@@ -19,7 +19,7 @@ class Agile(models.Model):
     class Meta:
         verbose_name_plural = _('Agile Values')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name}'
 
 
@@ -40,5 +40,5 @@ class Principle(models.Model):
     class Meta:
         verbose_name_plural = _('Principles')
 
-    def __str__(self):
+    def __str__(self) -> str:
         return f'{self.name}'
