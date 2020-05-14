@@ -33,6 +33,12 @@ $ cd agile_project
 $ pipenv run python manage.py runserver
 ```
 
+Running Tests
+-------------
+```
+$ pipenv run pytest
+```
+
 Running `black` code formatter
 ------------------------------
 ```
@@ -41,5 +47,8 @@ $ pipenv run ./mkblack --diff
 $ pipenv run ./mkblack
 ```
 
-Running Tests
+Running mypy
 -------------
+```
+$ pipenv run mypy main
+```

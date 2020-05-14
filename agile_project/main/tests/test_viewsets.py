@@ -4,6 +4,8 @@ from django.test import TestCase
 from django.urls import reverse
 from django.contrib.auth.models import User
 
+from typing import Dict
+
 from rest_framework import status
 from rest_framework.test import APIClient
 
@@ -14,12 +16,12 @@ from ..models import (
 
 
 @pytest.fixture
-def user():
+def user() -> User:
     return User.objects.create_user('username', 'email@email.com', 'password',)
 
 
 @pytest.fixture
-def agile_value():
+def agile_value() -> Agile:
     return Agile.objects.create(
         name='Individuals and interactions over processes and tools',
         description='This value of the Agile manifesto focuses on giving importance',
@@ -27,7 +29,7 @@ def agile_value():
 
 
 @pytest.fixture
-def principle():
+def principle() -> Principle:
     return Principle.objects.create(
         name='Simplicity',
         description='Develop just enough to get the job done for right now',
@@ -35,7 +37,7 @@ def principle():
 
 
 @pytest.fixture
-def logged_in_client(user):
+def logged_in_client(user) -> APIClient:
     """Setup a fixture for an APIClient with a logged in user."""
     client = APIClient()
     client.login(username=user.username, password='password')
@@ -45,7 +47,7 @@ def logged_in_client(user):
 @pytest.mark.django_db
 class TestAgileValueViews:
     @pytest.fixture
-    def defaults(self):
+    def defaults(self) -> Dict[Dict[str, str]]:
         payload = {
             'name': 'Working product over comprehensive documentation',
             'description': 'The Agile values dictate that the first and foremost duty',
