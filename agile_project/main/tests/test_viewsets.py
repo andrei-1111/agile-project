@@ -47,7 +47,7 @@ def logged_in_client(user) -> APIClient:
 @pytest.mark.django_db
 class TestAgileValueViews:
     @pytest.fixture
-    def defaults(self) -> Dict[Dict[str, str]]:
+    def defaults(self) -> Dict[str, Dict[str, str]]:
         payload = {
             'name': 'Working product over comprehensive documentation',
             'description': 'The Agile values dictate that the first and foremost duty',
