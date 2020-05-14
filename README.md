@@ -25,6 +25,7 @@ $ pipenv install
 
 Running the server
 ```
+$ cd agile_project
 $ pipenv run python manage.py runserver
 ```
 
