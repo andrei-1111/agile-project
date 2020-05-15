@@ -3,23 +3,17 @@ from rest_framework import (
     viewsets,
 )
 
-from .models import (
-    Agile,
-    Principle,
-)
-from .serializers import (
-    AgilePrincipleSerializer,
-    AgileValueSerializer,
-)
+from .models import Agile
+from .serializers import AgileSerializer
 
 
 class IsAuthenticated(permissions.BasePermission):
-    def has_permission(self, request, view):
+    def has_permission(self, request, view) -> bool:
         if request.method in permissions.SAFE_METHODS:
             return True
         return request.user and request.user.is_authenticated
 
-    def has_object_permission(self, request, view, obj):
+    def has_object_permission(self, request, view, obj) -> bool:
         # Read permissions are allowed to any request,
         # so we'll always allow GET, HEAD or OPTIONS requests.
         if request.method in permissions.SAFE_METHODS:
@@ -28,13 +22,7 @@ class IsAuthenticated(permissions.BasePermission):
         return request.user and request.user.is_authenticated
 
 
-class AgilePrincipleViewSet(viewsets.ModelViewSet):
-    queryset = Principle.objects.all()
-    serializer_class = AgilePrincipleSerializer
-    permission_classes = (IsAuthenticated,)
-
-
-class AgileValueViewSet(viewsets.ModelViewSet):
+class AgileViewSet(viewsets.ModelViewSet):
     queryset = Agile.objects.all()
-    serializer_class = AgileValueSerializer
+    serializer_class = AgileSerializer
     permission_classes = (IsAuthenticated,)
