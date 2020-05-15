@@ -1,11 +1,9 @@
-
 from django.test import TestCase
 
 from ..models import Agile
 
 
 class AgileMethodTests(TestCase):
-
     def test_get_values(self):
         """Tests expected Agile type values from fixtures."""
         self.assertTrue(Agile.objects.get_values().count(), 4)

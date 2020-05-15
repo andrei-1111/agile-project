@@ -9,9 +9,7 @@ from typing import Dict
 from rest_framework import status
 from rest_framework.test import APIClient
 
-from ..models import (
-    Agile,
-)
+from ..models import Agile
 
 
 @pytest.fixture
@@ -82,9 +80,7 @@ class TestAgileViews:
         """Tests post request creates a Value instance."""
         url = reverse('agile:agile-list')
         paylod = defaults['payload']
-        paylod.update({
-            'type': Agile.TYPE_VALUE
-        })
+        paylod.update({'type': Agile.TYPE_VALUE})
         resp = logged_in_client.post(url, defaults['payload'])
         assert resp.status_code == status.HTTP_201_CREATED
         agile = Agile.objects.get_or_none(id=resp.json()['id'])
@@ -95,9 +91,7 @@ class TestAgileViews:
         """Tests post request creates a Value instance."""
         url = reverse('agile:agile-list')
         paylod = defaults['payload']
-        paylod.update({
-            'type': Agile.TYPE_PRINCIPLE
-        })
+        paylod.update({'type': Agile.TYPE_PRINCIPLE})
         resp = logged_in_client.post(url, defaults['payload'])
         assert resp.status_code == status.HTTP_201_CREATED
         agile = Agile.objects.get_or_none(id=resp.json()['id'])

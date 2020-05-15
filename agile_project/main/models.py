@@ -4,7 +4,6 @@ from django.utils.translation import ugettext_lazy as _
 
 
 class AgileManager(models.Manager):
-
     def get_or_none(self, **kwargs):
         """
         Like the standard ``.get()`` except it returns ``None`` rather than
@@ -37,10 +36,8 @@ class Agile(models.Model):
         default='',
         help_text='Description of the Agile Value or Principle.',
     )
-    type =  models.CharField(
-                max_length=20,
-                choices=AGILE_TYPES_CHOICES,
-                default=TYPE_VALUE
+    type = models.CharField(
+        max_length=20, choices=AGILE_TYPES_CHOICES, default=TYPE_VALUE
     )
 
     creation_date = models.DateTimeField(_('date created'), auto_now_add=True)

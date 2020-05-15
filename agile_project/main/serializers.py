@@ -1,8 +1,6 @@
 from rest_framework import serializers
 
-from .models import (
-    Agile,
-)
+from .models import Agile
 
 
 class AgileSerializer(serializers.ModelSerializer):

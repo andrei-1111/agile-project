@@ -1,9 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from .viewsets import (
-    AgileViewSet,
-)
+from .viewsets import AgileViewSet
 
 app_name = 'agile'
 

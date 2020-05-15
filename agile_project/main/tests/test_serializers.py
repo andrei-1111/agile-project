@@ -4,12 +4,8 @@ from django.test import TestCase
 
 from typing import Dict
 
-from ..models import (
-    Agile,
-)
-from ..serializers import (
-    AgileSerializer,
-)
+from ..models import Agile
+from ..serializers import AgileSerializer
 
 
 @pytest.mark.django_db
