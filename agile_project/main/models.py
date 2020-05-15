@@ -2,6 +2,25 @@ from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
 
+class AgileManager(models.Manager):
+
+    def get_or_none(self, **kwargs):
+        """
+        Like the standard ``.get()`` except it returns ``None`` rather than
+        raising a ``DoesNotExist` exception.
+        """
+        try:
+            return self.get(**kwargs)
+        except self.model.DoesNotExist:
+            return None
+
+    def get_values(self) -> 'QuerySet[Agile]':
+        return self.filter(type=Agile.TYPE_VALUE)
+
+    def get_principles(self) -> 'QuerySet[Agile]':
+        return self.filter(type=Agile.TYPE_PRINCIPLE)
+
+
 class Agile(models.Model):
 
     TYPE_VALUE = 'value'
@@ -28,8 +47,10 @@ class Agile(models.Model):
         _('date last modified'), auto_now=True
     )
 
+    objects = AgileManager()
+
     class Meta:
         verbose_name_plural = _('Agile Values and Principles')
 
     def __str__(self) -> str:
-        return f'{self.type}: {self.name} '
+        return f'{self.type}: {self.name}'

@@ -20,7 +20,6 @@ def move_principles_data(apps, schema_editor):
     """
     Principle = apps.get_model('main', 'Principle')
     Agile = apps.get_model('main', 'Agile')
-    TYPE_VALUE = 'value'
     TYPE_PRINCIPLE = 'principle'
     for principle in Principle.objects.all():
         Agile.objects.create(
